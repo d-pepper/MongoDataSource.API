@@ -117,12 +117,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MongoDataSource.DAL\MongoDataSource.DAL.csproj">
-      <Project>{c41a63f0-150a-4c92-b434-1c7a7ed14c47}</Project>
-      <Name>MongoDataSource.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
