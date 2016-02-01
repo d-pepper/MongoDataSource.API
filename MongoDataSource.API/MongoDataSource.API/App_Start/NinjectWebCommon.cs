@@ -8,7 +8,7 @@ using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Common;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-using MongoDataSource.DAL;
+//using MongoDataSource.DAL;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
@@ -44,7 +44,7 @@ namespace MongoDataSource.API.App_Start
         private static IKernel CreateKernel()
         {
             var modules = new INinjectModule[]{
-                new DalNinjectModule()
+//                new DalNinjectModule()
             };
 
             var kernel = new StandardKernel(modules);

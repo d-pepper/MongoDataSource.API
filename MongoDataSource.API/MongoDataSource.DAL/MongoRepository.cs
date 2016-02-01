@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using MongoDB.Driver;
 using MongoDB.Bson;
 
 namespace MongoDataSource.DAL
@@ -7,6 +9,7 @@ namespace MongoDataSource.DAL
     {
         protected static IMongoClient _client;
         protected static IMongoDatabase _database;
+        protected static IMongoCollection<BsonDocument> _collection; 
 
         public MongoRepository()
         {
@@ -14,10 +17,12 @@ namespace MongoDataSource.DAL
 
             _client = new MongoClient(connectionstring);
             _database = _client.GetDatabase("restaurants");
-            var col = _database.GetCollection<BsonDocument>("restaurants");
+            _collection = _database.GetCollection<BsonDocument>("restaurants");
+        }
 
+        public async Task<IAsyncCursor<BsonDocument>> GetAll()
+        {
+            return await _collection.FindAsync(new BsonDocument());
         }
     }
-
-
 }

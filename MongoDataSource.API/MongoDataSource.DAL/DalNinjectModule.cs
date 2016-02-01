@@ -10,9 +10,13 @@ namespace MongoDataSource.DAL
 {
     public class DalNinjectModule : NinjectModule
     {
+//        public override void Load()
+//        {
+//            Bind<IRepository>().To<MongoRepository>();
+//        }
         public override void Load()
         {
-            Bind<IRepository>().To<MongoRepository>();
+            throw new NotImplementedException();
         }
     }
 }
