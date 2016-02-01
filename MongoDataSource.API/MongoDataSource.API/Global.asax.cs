@@ -8,16 +8,17 @@ using Ninject.Web.Common;
 
 namespace MongoDataSource.API
 {
-    public class WebApiApplication : NinjectHttpApplication
+//    public class WebApiApplication : NinjectHttpApplication
+    public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
 
-        protected override Ninject.IKernel CreateKernel()
-        {
-            throw new NotImplementedException();
-        }
+//        protected override Ninject.IKernel CreateKernel()
+//        {
+//            throw new NotImplementedException();
+//        }
     }
 }

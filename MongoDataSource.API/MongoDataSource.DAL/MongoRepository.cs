@@ -16,13 +16,15 @@ namespace MongoDataSource.DAL
             var connectionstring = "mongodb://localhost:27017";
 
             _client = new MongoClient(connectionstring);
-            _database = _client.GetDatabase("restaurants");
+            _database = _client.GetDatabase("test");
             _collection = _database.GetCollection<BsonDocument>("restaurants");
         }
 
-        public async Task<IAsyncCursor<BsonDocument>> GetAll()
+        public async Task<List<BsonDocument>> GetAll()
         {
-            return await _collection.FindAsync(new BsonDocument());
+            var filter = Builders<BsonDocument>.Filter.Eq("borough", "Manhattan");
+            var x = await _collection.Find(filter).ToListAsync();
+            return x;
         }
     }
 }
