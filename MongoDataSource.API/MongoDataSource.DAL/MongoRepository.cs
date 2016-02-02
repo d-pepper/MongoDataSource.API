@@ -22,8 +22,8 @@ namespace MongoDataSource.DAL
 
         public async Task<List<BsonDocument>> GetAll()
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("borough", "Manhattan");
-            var x = await _collection.Find(filter).ToListAsync();
+//            var filter = Builders<BsonDocument>.Filter.Eq("borough", "Manhattan");
+            var x = await _collection.Find(new BsonDocument()).ToListAsync(); //TODO Update to more efficient method
             return x;
         }
     }

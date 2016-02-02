@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using MongoDataSource.DAL;
@@ -16,10 +17,30 @@ namespace MongoDataSource.API.Controllers
 
             BsonClassMap.RegisterClassMap<Restaurant>(cm =>
             {
+                cm.AutoMap();
                 cm.MapProperty(c => c.Name);
                 cm.MapProperty(c => c.Cuisine);
+                cm.MapProperty(c => c.Borough);
+                cm.MapProperty(c => c.RestaurantId);
+                cm.MapProperty(c => c.Grades);
             });
-            
+
+            BsonClassMap.RegisterClassMap<Grade>(cm =>
+            {
+                cm.AutoMap();
+                cm.MapProperty(c => c.Date);
+                cm.MapProperty(c => c.GradeValue);
+                cm.MapProperty(c => c.Score);
+            });
+
+            BsonClassMap.RegisterClassMap<Address>(cm =>
+            {
+                cm.AutoMap();
+                cm.MapProperty(c => c.Building);
+                cm.MapProperty(c => c.Coord);
+                cm.MapProperty(c => c.Street);
+                cm.MapProperty(c => c.Zipcode);
+            });
 
             return Ok(collection);
         }
@@ -32,16 +53,22 @@ namespace MongoDataSource.API.Controllers
         public Address Address { get; set; }
         public string Borough { get; set; }
         public List<Grade> Grades { get; set; }
-        public int RestaurantId { get; set; }
-        
+        public int RestaurantId { get; set; }   
     }
 
     public class Grade
     {
+        public DateTime Date { get; set; }
+        public string GradeValue { get; set; }
+        public int Score { get; set; }
     }
 
     public class Address
     {
+        public string Building { get; set; }
+        public string Coord { get; set; }
+        public string Street { get; set; }
+        public string Zipcode { get; set; }
     }
 
 //    {
